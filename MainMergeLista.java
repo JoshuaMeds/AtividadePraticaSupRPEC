@@ -1,7 +1,9 @@
+// combina duas filas ordenadas em  uma nova fila ordenada
+
 public class MainMergeLista {
     public static void main(String[] args) {
-        Fila filaA = new Fila();
-        Fila filaB = new Fila();
+        Fila filaA = new Fila(); // fila 1
+        Fila filaB = new Fila(); // fila 2
 
         System.out.println("=== TESTE DO MERGE COM LISTA ENCADEADA ===");
 
@@ -29,12 +31,12 @@ public class MainMergeLista {
     }
 
     public static Fila mergeFilas(Fila filaA, Fila filaB) {
-        Fila filaC = new Fila();
+        Fila filaC = new Fila(); // percorre as filas
         NoFila atualA = filaA.inicio;
         NoFila atualB = filaB.inicio;
 
         while (atualA != null && atualB != null) {
-            if (atualA.valor < atualB.valor) {
+            if (atualA.valor < atualB.valor) { // comparar elementos das filas
                 filaC.insere(atualA.valor);
                 atualA = atualA.proximo;
             } else {
@@ -43,13 +45,13 @@ public class MainMergeLista {
             }
         }
 
-        // Adiciona os elementos restantes de A
+        // Adiciona os elementos restantes de A se tiver
         while (atualA != null) {
             filaC.insere(atualA.valor);
             atualA = atualA.proximo;
         }
 
-        // Adiciona os elementos restantes de B
+        // Adiciona os elementos restantes de B se tiver
         while (atualB != null) {
             filaC.insere(atualB.valor);
             atualB = atualB.proximo;
