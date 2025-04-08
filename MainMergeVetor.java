@@ -1,9 +1,9 @@
 class FilaVetor {
-    private int[] dados;
-    private int inicio;
-    private int fim;
-    private int tamanho;
-    private final int tamanhoMaximo;
+    private int[] dados; // vetor para elemnentos
+    private int inicio; // indice do primeiro elemento
+    private int fim; // indice do ultimo elemento
+    private int tamanho;// quantidade de elementos
+    private final int tamanhoMaximo; // maximo
 
     public FilaVetor(int tamanhoMaximo) {
         this.tamanhoMaximo = tamanhoMaximo;
@@ -13,6 +13,7 @@ class FilaVetor {
         this.tamanho = 0;
     }
 
+    //inserir elementos
     public void insere(int valor) {
         if (tamanho == tamanhoMaximo) {
             System.out.println("Fila cheia, não é possível inserir.");
@@ -24,6 +25,7 @@ class FilaVetor {
         System.out.println("Elemento " + valor + " inserido na fila.");
     }
 
+    //remover elementos
     public int remove() {
         if (tamanho == 0) {
             System.out.println("Fila vazia, não é possível remover.");
@@ -36,6 +38,7 @@ class FilaVetor {
         return valorRemovido;
     }
 
+    //imprimir elementos
     public void imprime() {
         System.out.print("Elementos da fila: ");
         for (int i = 0; i < tamanho; i++) {
@@ -53,7 +56,7 @@ class FilaVetor {
         if (index < 0 || index >= tamanho) {
             throw new IndexOutOfBoundsException("Índice inválido");
         }
-        return dados[(inicio + index) % tamanhoMaximo];
+        return dados[(inicio + index) % tamanhoMaximo]; // calcula possicao do vetor
     }
 }
 
@@ -88,16 +91,16 @@ public class MainMergeVetor {
     }
 
     public static FilaVetor mergeFilas(FilaVetor filaA, FilaVetor filaB) {
-        int tamanhoTotal = filaA.getTamanho() + filaB.getTamanho();
+        int tamanhoTotal = filaA.getTamanho() + filaB.getTamanho(); // cria fila do resultado
         FilaVetor filaC = new FilaVetor(tamanhoTotal);
         int indexA = 0;
         int indexB = 0;
 
         while (indexA < filaA.getTamanho() && indexB < filaB.getTamanho()) {
-            int valorA = filaA.getElemento(indexA);
-            int valorB = filaB.getElemento(indexB);
+            int valorA = filaA.getElemento(indexA); // obtem elementos
+            int valorB = filaB.getElemento(indexB); // obtem elementos
 
-            if (valorA < valorB) {
+            if (valorA < valorB) { // compara e pega o menor
                 filaC.insere(valorA);
                 indexA++;
             } else {
@@ -106,13 +109,13 @@ public class MainMergeVetor {
             }
         }
 
-        // Adiciona os elementos restantes de A
+        // Adiciona os restos de A
         while (indexA < filaA.getTamanho()) {
             filaC.insere(filaA.getElemento(indexA));
             indexA++;
         }
 
-        // Adiciona os elementos restantes de B
+        // Adiciona os restos de A
         while (indexB < filaB.getTamanho()) {
             filaC.insere(filaB.getElemento(indexB));
             indexB++;
