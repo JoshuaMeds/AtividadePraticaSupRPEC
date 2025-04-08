@@ -1,6 +1,6 @@
 class NoFila {
     int valor;
-    NoFila proximo;
+    NoFila proximo; // referecia pro próximo nó
 
     public NoFila(int valor) {
         this.valor = valor;
@@ -17,34 +17,37 @@ class Fila {
         this.fim = null;
     }
 
+    // insere um valor no final da fila
     public void insere(int valor) {
-        NoFila novoNo = new NoFila(valor);
+        NoFila novoNo = new NoFila(valor); // cria um novo nó
         if (fim == null) {
             inicio = novoNo;
             fim = novoNo;
         } else {
             fim.proximo = novoNo;
-            fim = novoNo;
+            fim = novoNo; // atualiza o fim para ser o novo nó
         }
         System.out.println("Elemento " + valor + " inserido na fila.");
     }
 
+    // remove valor do inicio da fila
     public int remove() {
         if (inicio == null) {
             System.out.println("Fila vazia, não é possível remover.");
             return -1;
         }
-        int valorRemovido = inicio.valor;
-        inicio = inicio.proximo;
+        int valorRemovido = inicio.valor; // guarda valor
+        inicio = inicio.proximo; // atualiza o valor
         if (inicio == null) {
-            fim = null;
+            fim = null; // atualiza o fim
         }
         System.out.println("Elemento " + valorRemovido + " removido da fila.");
         return valorRemovido;
     }
 
+    // imprime fila
     public void imprime() {
-        NoFila atual = inicio;
+        NoFila atual = inicio; // inicio ao fim da fila
         System.out.print("Elementos da fila: ");
         while (atual != null) {
             System.out.print(atual.valor + " ");
